@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+body{margin:0;}
+a{color:#A9834C;}
+a:hover{color:#C29A5E;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#16140F;font-family:Manrope,sans-serif;color:#F5EFE3;display:flex;flex-direction:column;">
+
+<main style="flex:1;display:flex;align-items:center;justify-content:center;padding:64px 32px;">
+  <div style="max-width:640px;width:100%;text-align:center;animation:fadeUp .8s ease both;">
+    <img src="uploads/WhatsApp Image 2026-07-17 at 18.06.26.jpeg" alt="Logo ASF Advogados Associados" style="width:96px;height:96px;border-radius:20px;object-fit:cover;display:block;margin:0 auto 28px;" />
+    <p style="font-family:Manrope,sans-serif;font-size:12px;font-weight:700;letter-spacing:.24em;color:#A9834C;margin:0 0 20px;">ASF ADVOGADOS ASSOCIADOS</p>
+    <h1 style="font-family:Newsreader,serif;font-weight:500;font-size:clamp(34px,5vw,54px);line-height:1.12;margin:0 0 20px;">Nosso site está <em style="color:#A9834C;font-style:italic;">em manutenção</em>.</h1>
+    <p style="font-size:17px;line-height:1.7;color:rgba(245,239,227,0.72);margin:0 auto 40px;max-width:460px;">Estamos preparando uma nova experiência para você. Enquanto isso, seguimos atendendo normalmente — fale com a gente pelo WhatsApp.</p>
+
+    <a href="{{ whatsappLink }}" target="_blank" rel="noopener" style="display:inline-block;padding:17px 36px;border-radius:999px;background:#A9834C;color:#16140F;text-decoration:none;font-weight:700;font-size:15px;">Falar no WhatsApp</a>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;text-align:left;margin-top:56px;padding-top:40px;border-top:1px solid rgba(245,239,227,0.15);">
+      <div>
+        <p style="font-size:11px;letter-spacing:.15em;color:#6B6455;margin:0 0 8px;">TELEFONE</p>
+        <p style="font-size:15px;color:#F5EFE3;margin:0;">{{ whatsappDisplay }}</p>
+      </div>
+      <div>
+        <p style="font-size:11px;letter-spacing:.15em;color:#6B6455;margin:0 0 8px;">ENDEREÇO</p>
+        <p style="font-size:15px;color:#F5EFE3;line-height:1.6;margin:0;">SHS Qd 06, Bloco A, sala 501<br/>Complexo Empresarial Brasil 21<br/>Brasília, DF</p>
+      </div>
+      <div>
+        <p style="font-size:11px;letter-spacing:.15em;color:#6B6455;margin:0 0 8px;">INSTAGRAM</p>
+        <p style="font-size:15px;margin:0 0 6px;"><a href="https://www.instagram.com/asfadvogados_" target="_blank" rel="noopener" style="color:#F5EFE3;text-decoration:none;">@asfadvogados_ <span style="color:#6B6455;font-size:12px;">· concursos</span></a></p>
+        <p style="font-size:15px;margin:0;"><a href="https://www.instagram.com/silasadauto" target="_blank" rel="noopener" style="color:#F5EFE3;text-decoration:none;">@silasadauto <span style="color:#6B6455;font-size:12px;">· empresarial</span></a></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer style="background:#0F0D0A;padding:28px 32px;text-align:center;">
+  <p style="font-size:12px;color:#6B6455;margin:0;">© {{ year }} ASF Advogados Associados. Todos os direitos reservados.</p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5561982777896&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;},&quot;phoneDisplay&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;(61) 98277-7896&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;},&quot;whatsappMessage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Olá! Vi que o site está em manutenção e gostaria de falar com a ASF Advogados.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props || {};
+    const whatsappNumber = p.whatsappNumber || '5561982777896';
+    const msg = p.whatsappMessage || 'Olá! Vi que o site está em manutenção e gostaria de falar com a ASF Advogados.';
+    return {
+      whatsappLink: 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(msg),
+      whatsappDisplay: p.phoneDisplay || '(61) 98277-7896',
+      year: new Date().getFullYear(),
+    };
+  }
+}
+</script>
+</body>
+</html>

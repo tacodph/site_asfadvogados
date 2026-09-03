@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+body{margin:0;}
+a{color:#8B6B3D;}
+a:hover{color:#A9834C;}
+</style>
+</helmet>
+<div style="background:#F5EFE3;font-family:Manrope,sans-serif;color:#16140F;min-height:100vh;">
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(245,239,227,0.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(22,20,15,0.12);">
+  <div style="max-width:960px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#16140F;">
+      <img src="uploads/WhatsApp Image 2026-07-17 at 18.06.26.jpeg" alt="Logo ASF Advogados Associados" style="width:40px;height:40px;border-radius:9px;object-fit:cover;" />
+      <span style="display:flex;flex-direction:column;line-height:1.1;">
+        <span style="font-family:Newsreader,serif;font-size:24px;font-weight:600;">ASF</span>
+        <span style="font-family:Manrope,sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;color:#6B6455;">ADVOGADOS ASSOCIADOS</span>
+      </span>
+    </a>
+    <a href="index.html" style="text-decoration:none;color:#16140F;font-size:14px;font-weight:700;border-bottom:1px solid #16140F;padding-bottom:2px;">← Voltar ao site</a>
+  </div>
+</header>
+
+<section style="max-width:960px;margin:0 auto;padding:90px 32px 60px;">
+  <p style="font-family:Manrope,sans-serif;font-size:12px;font-weight:700;letter-spacing:.22em;color:#8B6B3D;margin:0 0 16px;">ARTIGOS</p>
+  <h1 style="font-family:Newsreader,serif;font-weight:500;font-size:clamp(32px,4.5vw,52px);line-height:1.1;margin:0 0 20px;">Conteúdo jurídico para concurseiros, servidores e empresários.</h1>
+  <p style="font-size:17px;line-height:1.7;color:#6B6455;max-width:640px;margin:0;">Análises técnicas e diretas sobre os temas que mais afetam quem enfrenta um concurso público ou administra um negócio.</p>
+</section>
+
+<section style="max-width:960px;margin:0 auto;padding:0 32px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
+  <sc-for list="{{ articles }}" as="a" hint-placeholder-count="3">
+    <a href="{{ a.anchor }}" style="display:block;text-decoration:none;color:#16140F;background:#FBF8F2;border:1px solid rgba(22,20,15,0.1);border-radius:16px;padding:26px;">
+      <span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;color:#8B6B3D;background:rgba(169,131,76,0.12);padding:5px 12px;border-radius:999px;margin-bottom:14px;">{{ a.tag }}</span>
+      <h3 style="font-family:Newsreader,serif;font-size:19px;font-weight:600;margin:0;line-height:1.3;">{{ a.title }}</h3>
+    </a>
+  </sc-for>
+</section>
+
+<article id="taf" style="max-width:760px;margin:0 auto;padding:60px 32px;border-top:1px solid rgba(22,20,15,0.12);">
+  <span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;color:#8B6B3D;background:rgba(169,131,76,0.12);padding:5px 12px;border-radius:999px;margin-bottom:20px;">Concursos</span>
+  <h2 style="font-family:Newsreader,serif;font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.2;margin:0 0 28px;">Reprovei no TAF. Dá para reverter?</h2>
+  <div style="display:flex;flex-direction:column;gap:20px;font-size:17px;line-height:1.8;color:#2A2620;">
+    <p style="margin:0;">O Teste de Aptidão Física (TAF) é um dos principais desafios de quem se prepara para carreiras militares e policiais — e uma das fases que mais reprova candidatos. Se isso aconteceu com você, vale a pena entender o que pode ser feito.</p>
+    <p style="margin:0;">Antes de tudo, é importante saber que o TAF deve acontecer em condições equivalentes para todos os candidatos, respeitando a transparência do processo. Infelizmente, reprovações ilegais são comuns: cronômetro fantasma, inovação de regras não previstas em edital, marcação incorreta pelos avaliadores, falta de razoabilidade e proporcionalidade na aplicação.</p>
+    <p style="margin:0;">Se você foi considerado inapto, em muitos casos é possível reverter a decisão. O primeiro passo é sempre recorrer administrativamente — por mais improvável que pareça, o recurso é levado em consideração caso o caso avance para a via judicial.</p>
+    <p style="margin:0;">Se o recurso for indeferido, a alternativa é judicializar. Mas antes disso, vale buscar orientação técnica para avaliar a viabilidade: existem diversos precedentes em que a jurisprudência flexibiliza regras do edital com base em princípios fundamentais, nas particularidades do caso concreto, ou até por meio de perícia técnica.</p>
+    <p style="margin:0;padding:20px 24px;background:#FBF8F2;border-radius:12px;border:1px solid rgba(22,20,15,0.1);">✓ Orientação importante: sempre solicite a gravação do seu TAF. É um direito seu e pode ser decisivo para comprovar uma ilegalidade.</p>
+  </div>
+  <a href="#topo" style="display:inline-block;margin-top:32px;font-size:14px;font-weight:700;color:#16140F;text-decoration:none;border-bottom:1px solid #16140F;">↑ Voltar ao topo</a>
+</article>
+
+<article id="recurso" style="max-width:760px;margin:0 auto;padding:60px 32px;border-top:1px solid rgba(22,20,15,0.12);">
+  <span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;color:#8B6B3D;background:rgba(169,131,76,0.12);padding:5px 12px;border-radius:999px;margin-bottom:20px;">Concursos</span>
+  <h2 style="font-family:Newsreader,serif;font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.2;margin:0 0 28px;">Recurso administrativo: a primeira linha de defesa do concurseiro</h2>
+  <div style="display:flex;flex-direction:column;gap:20px;font-size:17px;line-height:1.8;color:#2A2620;">
+    <p style="margin:0;">É comum que ilegalidades cometidas pela banca examinadora apareçam já nas primeiras fases do certame e se repitam ao longo de todas as etapas — do gabarito preliminar à investigação social. Por isso, o recurso administrativo é uma das ferramentas mais estratégicas à disposição do candidato.</p>
+    <p style="margin:0;">Um recurso bem fundamentado tecnicamente pode reverter questões com erro grosseiro, divergência em relação ao edital ou aplicação incorreta de critérios de correção — muitas vezes sem a necessidade de judicializar o caso.</p>
+    <p style="margin:0;">Além disso, mesmo quando o recurso é indeferido, ele cumpre um papel importante: demonstra que a ilegalidade foi levantada tempestivamente, o que fortalece a posição do candidato caso o caminho seguinte seja a via judicial.</p>
+    <p style="margin:0;">Contar com um especialista para preparar o recurso — em vez de utilizar modelos genéricos — costuma ser o que diferencia um recurso que é analisado com atenção de um que é indeferido por falta de fundamentação técnica.</p>
+  </div>
+  <a href="#topo" style="display:inline-block;margin-top:32px;font-size:14px;font-weight:700;color:#16140F;text-decoration:none;border-bottom:1px solid #16140F;">↑ Voltar ao topo</a>
+</article>
+
+<article id="dividas" style="max-width:760px;margin:0 auto;padding:60px 32px 100px;border-top:1px solid rgba(22,20,15,0.12);">
+  <span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;color:#8B6B3D;background:rgba(169,131,76,0.12);padding:5px 12px;border-radius:999px;margin-bottom:20px;">Empresarial</span>
+  <h2 style="font-family:Newsreader,serif;font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.2;margin:0 0 28px;">Dívidas bancárias e capital de giro: como proteger sua empresa na crise</h2>
+  <div style="display:flex;flex-direction:column;gap:20px;font-size:17px;line-height:1.8;color:#2A2620;">
+    <p style="margin:0;">Dívidas bancárias fazem parte da rotina de boa parte das empresas — o problema começa quando elas comprometem o capital de giro e colocam em risco a operação do negócio. Nesses casos, esperar raramente é a melhor estratégia.</p>
+    <p style="margin:0;">Contratos bancários muitas vezes trazem cláusulas abusivas, encargos acima do praticado no mercado ou condições que dificultam a renegociação. Uma revisão técnica desses contratos pode reduzir significativamente o peso das dívidas no caixa da empresa.</p>
+    <p style="margin:0;">Quando o passivo já compromete a continuidade do negócio, a reestruturação de dívidas — negociada judicial ou extrajudicialmente — permite reorganizar prazos, encargos e garantias sem interromper a operação.</p>
+    <p style="margin:0;">Isso vale tanto para a empresa quanto para o empresário que responde pessoalmente por dívidas do negócio. Com planejamento jurídico adequado, é possível proteger o patrimônio pessoal e preservar o fôlego para continuar crescendo — porque crise não impede crescimento, quando há estratégia por trás.</p>
+  </div>
+  <a href="#topo" style="display:inline-block;margin-top:32px;font-size:14px;font-weight:700;color:#16140F;text-decoration:none;border-bottom:1px solid #16140F;">↑ Voltar ao topo</a>
+</article>
+
+<footer style="background:#0F0D0A;padding:36px 32px;">
+  <div style="max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="uploads/WhatsApp Image 2026-07-17 at 18.06.26.jpeg" alt="Logo ASF Advogados Associados" style="width:44px;height:44px;border-radius:10px;object-fit:cover;" />
+      <p style="font-family:Newsreader,serif;font-size:16px;color:#F5EFE3;margin:0;">ASF Advogados Associados</p>
+    </div>
+    <a href="{{ whatsappLink }}" target="_blank" rel="noopener" style="padding:12px 22px;border-radius:999px;background:#A9834C;color:#16140F;text-decoration:none;font-weight:700;font-size:13px;">Fale no WhatsApp</a>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5561982777896&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const whatsappNumber = (this.props && this.props.whatsappNumber) || '5561982777896';
+    const whatsappMsg = encodeURIComponent('Olá! Vim pelo site e gostaria de falar com a ASF Advogados.');
+    return {
+      whatsappLink: 'https://wa.me/' + whatsappNumber + '?text=' + whatsappMsg,
+      articles: [
+        { tag: 'Concursos', title: 'Reprovei no TAF. Dá para reverter?', anchor: '#taf' },
+        { tag: 'Concursos', title: 'Recurso administrativo: a primeira linha de defesa', anchor: '#recurso' },
+        { tag: 'Empresarial', title: 'Dívidas bancárias e capital de giro na crise', anchor: '#dividas' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
