@@ -11,14 +11,22 @@ SRC = ROOT / "src"
 TEMPLATE_IN = SRC / "index.template.html"
 COMPONENT_IN = SRC / "index.component.js"
 SEO_IN = SRC / "seo-meta.html"
+SEO_SHELL_IN = SRC / "seo-shell.html"
 COMPONENT_MARKER = "<!-- @component -->"
 SEO_MARKER = "<!-- @seo -->"
+SEO_SHELL_MARKER = "<!-- @seo-shell -->"
 
 
-def inject_seo(html: str, seo: str) -> str:
-    if SEO_MARKER not in html:
-        raise SystemExit(f"Marker {SEO_MARKER!r} not found")
-    return html.replace(SEO_MARKER, seo.strip() + "\n", 1)
+def to_embedded_json(html: str) -> str:
+    """JSON for __bundler/template: hide </script> from the HTML parser."""
+    dumped = json.dumps(html, ensure_ascii=False)
+    return re.sub(r"</(script)\b", r"<\\u002Fscript", dumped, flags=re.IGNORECASE)
+
+
+def inject_block(html: str, marker: str, block: str) -> str:
+    if marker in html:
+        return html.replace(marker, block.strip() + "\n", 1)
+    return html
 
 
 def main() -> None:
@@ -28,23 +36,26 @@ def main() -> None:
         raise SystemExit(f"Missing {SEO_IN.name}")
 
     seo = SEO_IN.read_text(encoding="utf-8")
-    markup = inject_seo(TEMPLATE_IN.read_text(encoding="utf-8"), seo)
+    seo_shell = SEO_SHELL_IN.read_text(encoding="utf-8") if SEO_SHELL_IN.exists() else seo
+
+    markup = inject_block(TEMPLATE_IN.read_text(encoding="utf-8"), SEO_MARKER, seo)
     component = COMPONENT_IN.read_text(encoding="utf-8").strip()
 
-    if COMPONENT_MARKER in markup:
-        template = markup.replace(COMPONENT_MARKER, component, 1)
-    else:
+    if COMPONENT_MARKER not in markup:
         raise SystemExit(f"Marker {COMPONENT_MARKER!r} not found in {TEMPLATE_IN.name}")
 
-    template_json = json.dumps(template, ensure_ascii=False)
+    template = markup.replace(COMPONENT_MARKER, component, 1)
+    template_json = to_embedded_json(template)
     json.loads(template_json)
 
-    content = inject_seo(INDEX.read_text(encoding="utf-8"), seo)
+    content = INDEX.read_text(encoding="utf-8")
+    content = inject_block(content, SEO_SHELL_MARKER, seo_shell)
+
     lines = content.splitlines(keepends=True)
     out_lines = []
     replaced = False
     for line in lines:
-        if line.startswith('"') and "doctype html" in line[:20].lower():
+        if line.startswith('"') and "doctype html" in line[:30].lower():
             out_lines.append(template_json + "\n")
             replaced = True
         else:
@@ -54,7 +65,7 @@ def main() -> None:
         raise SystemExit("Template line not found in index.html")
 
     INDEX.write_text("".join(out_lines), encoding="utf-8")
-    print(f"Rebuilt {INDEX.relative_to(ROOT)} (SEO + template)")
+    print(f"Rebuilt {INDEX.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
